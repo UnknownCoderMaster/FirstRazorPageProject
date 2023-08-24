@@ -1,0 +1,40 @@
+﻿@page
+@model FirstRazorPageProject.Pages.ContactModel
+@{
+	ViewData["Title"] = "Contact";
+}
+<h5 class="text-danger text-center">@ViewData["Title"]</h5>
+
+<h4 class="text-center">Please leave a comment about this site!</h4>
+
+<div class="d-flex justify-content-center">
+	<form class="w-50" method="post">
+		<input class="form-control mb-3" asp-area="" asp-for="Username" placeholder="Enter your name" required/>
+		<input class="form-control mb-3" asp-area="" asp-for="Message" placeholder="Enter your message" required />
+		<button class="btn btn-success w-100" type="submit">Send</button>
+	</form>
+</div>
+
+<div class="d-flex justify-content-center my-4" >
+	<div class="w-75">
+		@*<div class="message-style">
+			<div class="d-flex justify-content-between">
+				<h6>Username</h6>
+				<p>05.04.2004</p>
+			</div>
+			
+			<p class="m-0">Username typed personal opinion</p>
+		</div>*@
+
+		@foreach(var comment in Model.Comments)
+		{
+			<div class="message-style">
+				<div class="d-flex justify-content-between">
+					<h6>@comment.Username</h6>
+					<p>@comment.AddedDate</p>
+				</div>
+				<p class="m-0">@comment.Message</p>
+			</div>
+		}
+	</div>
+</div>
